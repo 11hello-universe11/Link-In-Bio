@@ -1,0 +1,350 @@
+/* Base Canvas & Ultra Dark Void */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #020306;
+    /* Deep Pitch Black */
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Dimmed Subtle Ambient Light Orbs */
+.ambient-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.12;
+    /* Lowered from 0.35 to eliminate glare */
+}
+
+.cyan-orb {
+    width: 350px;
+    height: 350px;
+    background: #00f2fe;
+    top: -10%;
+    left: -5%;
+}
+
+.magenta-orb {
+    width: 350px;
+    height: 350px;
+    background: #ff2a5f;
+    bottom: -10%;
+    right: -5%;
+}
+
+.gold-orb {
+    width: 300px;
+    height: 300px;
+    background: #ffb703;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.08;
+    /* Extremely soft central glow */
+}
+
+/* Subtle 3D Perspective Grid Floor */
+.grid-floor {
+    position: fixed;
+    width: 250%;
+    height: 250%;
+    top: -40%;
+    left: -75%;
+    background-image: linear-gradient(to right, rgba(255, 183, 3, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 242, 254, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: perspective(500px) rotateX(60deg);
+    pointer-events: none;
+    z-index: 2;
+    mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0) 70%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0) 70%);
+}
+
+/* Unboxed Spatial Canvas */
+.spatial-canvas {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem 1.5rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Center Core & Orb of Power */
+.center-core {
+    margin-bottom: 2.5rem;
+}
+
+.orb-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.orb-3d-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 183, 3, 0.6));
+    animation: floatCore 3.5s ease-in-out infinite;
+}
+
+.orb-glow-ring {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(0, 242, 254, 0.6);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+    animation: rotateRing 10s linear infinite;
+}
+
+@keyframes floatCore {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.04);
+    }
+}
+
+@keyframes rotateRing {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Neon Title & Tagline */
+.neon-title {
+    font-size: 2.2rem;
+    margin: 0 0 0.4rem 0;
+    background: linear-gradient(135deg, #00f2fe 0%, #ffb703 50%, #ff2a5f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    color: #ffb703;
+    font-style: italic;
+    font-size: 1rem;
+    margin: 0;
+    text-shadow: 0 0 8px rgba(255, 183, 3, 0.3);
+}
+
+/* Floating 2x2 Spatial Nodes */
+.spatial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Individual Floating 3D Dark Glass Nodes */
+.spatial-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    background: rgba(8, 12, 24, 0.92);
+    /* Darkened card body */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 22px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.95), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.node-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.node-3d-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.node-info h2 {
+    font-size: 1.05rem;
+    font-weight: bold;
+    margin: 0 0 0.25rem 0;
+}
+
+.node-sub {
+    font-size: 0.8rem;
+    font-family: monospace;
+    opacity: 0.85;
+}
+
+/* Individual Node Themes */
+.node-cyan {
+    border: 1.5px solid rgba(0, 242, 254, 0.4);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.15);
+}
+
+.node-cyan:hover {
+    transform: translateY(-8px) scale(1.05);
+    background: #00f2fe;
+    color: #03050a;
+    border-color: #00f2fe;
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.85);
+}
+
+.node-cyan:hover .node-sub {
+    color: #03050a;
+}
+
+.node-gold {
+    border: 1.5px solid rgba(255, 183, 3, 0.4);
+    box-shadow: 0 0 12px rgba(255, 183, 3, 0.15);
+}
+
+.node-gold:hover {
+    transform: translateY(-8px) scale(1.05);
+    background: #ffb703;
+    color: #03050a;
+    border-color: #ffb703;
+    box-shadow: 0 0 30px rgba(255, 183, 3, 0.9);
+}
+
+.node-gold:hover .node-sub {
+    color: #03050a;
+}
+
+.node-magenta {
+    border: 1.5px solid rgba(255, 42, 95, 0.4);
+    box-shadow: 0 0 12px rgba(255, 42, 95, 0.15);
+}
+
+.node-magenta:hover {
+    transform: translateY(-8px) scale(1.05);
+    background: #ff2a5f;
+    color: #ffffff;
+    border-color: #ff2a5f;
+    box-shadow: 0 0 30px rgba(255, 42, 95, 0.9);
+}
+
+.node-hype {
+    border: 1.5px solid rgba(255, 183, 3, 0.6);
+    background: linear-gradient(145deg, rgba(14, 20, 40, 0.92), rgba(28, 14, 32, 0.92));
+    box-shadow: 0 0 15px rgba(255, 183, 3, 0.2);
+}
+
+.node-hype:hover {
+    transform: translateY(-8px) scale(1.05);
+    background-color: #ffb703;
+    background-image: linear-gradient(135deg, #ffb703, #ff2a5f);
+    color: #ffffff;
+    border-color: #ffb703;
+    box-shadow: 0 0 35px rgba(255, 183, 3, 0.9);
+}
+
+/* Footer */
+.matrix-footer {
+    font-size: 0.85rem;
+    color: #ffb703;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.team-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.team-btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+.team-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Optional custom team glows on hover */
+.btn-bolts:hover {
+    border-color: #002868;
+    box-shadow: 0 0 10px rgba(0, 40, 104, 0.6);
+}
+
+.btn-devils:hover {
+    border-color: #ce1126;
+    box-shadow: 0 0 10px rgba(206, 17, 38, 0.6);
+}
+
+/* Hockey & Fitness Dual Team Buttons */ .team-links {
+    display: flex;
+    justify-content: center;/* Centers the buttons horizontally */ align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.team-btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+.team-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.btn-bolts:hover {
+    border-color: #002868;
+    box-shadow: 0 0 10px rgba(0, 40, 104, 0.6);
+}
+
+.btn-devils:hover {
+    border-color: #ce1126;
+    box-shadow: 0 0 10px rgba(206, 17, 38, 0.6);
+}
